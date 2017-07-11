@@ -8,5 +8,11 @@ function required(form, attributes, params) {
 			throw i18n.translate(item) + ' ' + i18n.translate('as_required');
 		}
 		
+		if (params.hasOwnProperty('regex')) {
+			eval("var regex = " + params.regex + ";");  
+			if (!regex.test(value))
+				throw i18n.translate(item) + ' ' + i18n.translate('as_invalid');
+		}
+		
 	})
 }
