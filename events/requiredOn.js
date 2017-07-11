@@ -15,6 +15,12 @@ function requiredOn(form, attributes, params) {
 				required(form, [item]);
 		}
 		
+		if (params.hasOwnProperty('regex')) {
+			eval("var regex = " + params.regex + ";");  
+			if (regex.test(valueDepend))
+				required(form, [item]);
+		}
+		
 	})
 	
 }
